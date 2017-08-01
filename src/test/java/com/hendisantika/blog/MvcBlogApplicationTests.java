@@ -1,4 +1,4 @@
-package com.hendisantika.blog.mvcblog;
+package com.hendisantika.blog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

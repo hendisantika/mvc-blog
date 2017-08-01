@@ -1,4 +1,4 @@
-package com.hendisantika.blog.mvcblog;
+package com.hendisantika.blog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
