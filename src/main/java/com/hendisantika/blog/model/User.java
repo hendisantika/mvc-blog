@@ -1,6 +1,8 @@
 package com.hendisantika.blog.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,17 +17,24 @@ import java.util.Set;
  */
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 5, max = 30)
     @Column(nullable = false, length = 30, unique = true)
     private String username;
 
+    @NotNull
+    @Size(min = 5, max = 60)
     @Column(length = 60)
     private String passwordHash;
 
+    @NotNull
+    @Size(min = 5, max = 30)
     @Column(length = 100)
     private String fullName;
 
@@ -70,6 +79,14 @@ public class User {
 
     public void setPosts(Set<Post> posts) {
         this.posts = posts;
+    }
+
+    public User() {
+    }
+
+    public User(String username, String fullName) {
+        this.username = username;
+        this.fullName = fullName;
     }
 
     public User(Long id, String username, String fullName) {
