@@ -1,11 +1,16 @@
 package com.hendisantika.blog.controller;
 
 import com.hendisantika.blog.form.LoginForm;
-import com.hendisantika.blog.service.NotificationService;
+import com.hendisantika.blog.model.User;
 import com.hendisantika.blog.service.LoginService;
+import com.hendisantika.blog.service.NotificationService;
+import com.hendisantika.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,6 +34,9 @@ public class LoginController {
     @Autowired
     private NotificationService notifyService;
 
+    @Autowired
+    private UserService us;
+
     @RequestMapping("/users/login")
     public String login(LoginForm loginForm) {
         return "users/login";
@@ -48,6 +56,27 @@ public class LoginController {
         }
 
         notifyService.addInfoMessage("Login successful");
+        return "redirect:/";
+    }
+
+    @GetMapping("/users/register")
+    public String register(Model m)
+    {
+        m.addAttribute("user", new User());
+        return "users/register";
+    }
+
+    @PostMapping("/users/register")
+    public String registerPage(@Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            notifyService.addErrorMessage("Please fill the form correctly!");
+            return "users/register";
+        }
+
+        notifyService.addInfoMessage("Registration successful");
+
+        us.create(user);
+
         return "redirect:/";
     }
 }
