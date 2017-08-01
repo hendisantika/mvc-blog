@@ -12,13 +12,18 @@ import javax.validation.constraints.Size;
  * Time: 5:12 PM
  * To change this template use File | Settings | File Templates.
  */
-public class LoginForm {
+public class RegForm {
+    @NotNull
     @Size(min=2, max=30, message = "Username size should be in the range [2...30]")
     private String username;
 
     @NotNull
     @Size(min=1, max=50)
     private String password;
+
+    @NotNull
+    @Size(min=5, max = 25)
+    private String fullname;
 
     public String getUsername() {
         return username;
@@ -34,5 +39,13 @@ public class LoginForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }
