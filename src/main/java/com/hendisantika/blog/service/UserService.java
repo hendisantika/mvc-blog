@@ -1,14 +1,22 @@
 package com.hendisantika.blog.service;
 
+import com.hendisantika.blog.model.User;
+
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: hendisantika
  * Email: hendisantika@gmail.com
  * Telegram : @hendisantika34
  * Date: 8/1/17
- * Time: 5:12 PM
+ * Time: 6:36 PM
  * To change this template use File | Settings | File Templates.
  */
 public interface UserService {
-    boolean authenticate(String username, String password);
+    List<User> findAll();
+    User findById(Long id);
+    User create(User user);
+    User edit(User user);
+    void deleteById(Long id);
 }

@@ -13,6 +13,7 @@ import java.util.List;
  * Time: 4:36 PM
  * To change this template use File | Settings | File Templates.
  */
+
 public interface PostService {
     List<Post> findAll();
     List<Post> findLatest5();

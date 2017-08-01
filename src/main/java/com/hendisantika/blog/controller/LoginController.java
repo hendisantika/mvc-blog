@@ -2,7 +2,7 @@ package com.hendisantika.blog.controller;
 
 import com.hendisantika.blog.form.LoginForm;
 import com.hendisantika.blog.service.NotificationService;
-import com.hendisantika.blog.service.UserService;
+import com.hendisantika.blog.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,7 +24,7 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
     @Autowired
-    private UserService userService;
+    private LoginService userService;
 
     @Autowired
     private NotificationService notifyService;

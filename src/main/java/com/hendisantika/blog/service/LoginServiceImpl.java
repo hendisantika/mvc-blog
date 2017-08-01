@@ -14,7 +14,8 @@ import java.util.Objects;
  * To change this template use File | Settings | File Templates.
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class LoginServiceImpl implements LoginService {
+    @Override
     public boolean authenticate(String username, String password) {
         // Provide a sample password check: username == password
         return Objects.equals(username, password);

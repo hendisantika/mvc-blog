@@ -2,7 +2,6 @@ package com.hendisantika.blog.service;
 
 import com.hendisantika.blog.model.Post;
 import com.hendisantika.blog.model.User;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ import java.util.stream.Collectors;
  */
 
 @Service
-@Primary
 public class PostServiceImpl implements PostService{
     private List<Post> posts = new ArrayList<Post>() {{
         add(new Post(1L, "First Post", "<p>Line #1.</p><p>Line #2</p>", null));
