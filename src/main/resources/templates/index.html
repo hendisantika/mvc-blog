@@ -5,6 +5,12 @@
 </head>
 <body>
 <header th:replace="layout :: site-header" />
+
+<aside>
+    <h2>Recent Posts</h2>
+    <a href=“#” th:each=“p : ${latest5posts}” th:text=“${p.title}” th:href=“@{/posts/view/{id}/(id=${p.id})}”>Work Begins on HTML5.1</a>
+</aside>
+
 <h1>Welcome to Spring MVC</h1>
 Now is: <b th:text="${execInfo.now.time}">date and time</b>
 
@@ -13,11 +19,11 @@ Now is: <b th:text="${execInfo.now.time}">date and time</b>
         <h2 class="title" th:text="${p.title}">Post Title</h2>
         <div class="date">
             <i>Posted on</i>
-            <span th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}">22-May-2016</span>
+            <span th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}">01-May-2017</span>
             <span th:if="${p.author}" th:remove="tag">
           <i>by</i>
           <span th:text="${p.author.fullName != null ?
-                        p.author.fullName : p.author.username}">Svetlin Nakov</span>
+                        p.author.fullName : p.author.username}">Hendi Santika</span>
         </span>
         </div>
         <p class="content" th:utext="${p.body}">Post content</p>
