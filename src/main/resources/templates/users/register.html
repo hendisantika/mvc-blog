@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Register New User</title>
 </head>
+
 <body>
-$END$
+
+<header th:replace="layout :: site-header" />
+
+<h2>Register New User</h2>
+
+<form action="#" th:action="@{/users/register}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <table border="1">
+
+        <tbody>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" th:field="*{username}" /></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Pesan error</td>
+        </tr>
+
+        <tr>
+            <td>Password</td>
+            <td><input type="password" th:field="*{passwordHash}" /></td>
+            <td th:if="${#fields.hasErrors('passwordHash')}" th:errors="*{passwordHash}">Pesan error</td>
+        </tr>
+
+        <tr>
+            <td>Fullname</td>
+            <td><input type="text" th:field="*{fullName}" /></td>
+            <td th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Pesan error</td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="Register" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<footer th:replace="layout :: site-footer" />
+
 </body>
+
 </html>
+
