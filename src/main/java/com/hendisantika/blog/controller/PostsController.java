@@ -6,10 +6,7 @@ import com.hendisantika.blog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -58,9 +55,16 @@ public class PostsController {
     }
 
     @PostMapping("/create")
-    public String createPost(@Valid Post post){
+    public String createPost(@Valid Post post) {
         System.out.println("Data : " + post);
         postService.create(post);
         return "redirect:list";
+    }
+
+    @GetMapping("/edit{id}")
+    public String editPost(@RequestParam Long id, Model m) {
+        Post post = postService.findById(id);
+        m.addAttribute("posts", post);
+        return "posts/edit";
     }
 }
