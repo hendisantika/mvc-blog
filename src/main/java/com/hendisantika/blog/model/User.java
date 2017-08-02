@@ -84,6 +84,8 @@ public class User {
     public User() {
     }
 
+
+
     public User(String username, String fullName) {
         this.username = username;
         this.fullName = fullName;
