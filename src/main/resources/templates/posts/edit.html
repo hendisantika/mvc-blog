@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Edit Post</title>
 </head>
 <body>
-$END$
+<header th:replace="layout :: site-header"></header>
+
+<h2>Edit Post</h2>
+
+<form method="post" th:object="${posts}">
+    <label for="title">Title :</label>
+    <br/>
+    <input type="text" id="title" name="title"
+           th:value="*{title}" size="60"/>
+    <span class="formError"
+          th:if="${#fields.hasErrors('title')}"
+          th:errors="*{title}">Invalid title</span>
+
+    <br/>
+
+    <label for="body">Content :</label><br/>
+    <textarea id="body" name="body"
+              th:value="*{body}" rows="10" cols="60">Ada Apa dengan Cinta 3</textarea>>
+    <span class="formError"
+          th:if="${#fields.hasErrors('body')}"
+          th:errors="*{body}">Invalid body</span>
+
+    <br />
+    <input type="submit" value="Create" />
+    <input type="reset" value="Cancel" />
+</form>
+
+<footer th:replace="layout :: site-footer"></footer>
 </body>
 </html>
