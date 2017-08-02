@@ -6,7 +6,31 @@
 <body>
 <header th:replace="layout :: site-header"/>
 
-<h2>Hendi Santika</h2>
+<h2>Post</h2>
+
+<table border="1">
+    <thead>
+
+    <tr align="center" style="font-weight:bold" bgcolor="#ffe4c4">
+        <td>ID</td>
+        <td>Title</td>
+        <td>Content</td>
+        <td>Date</td>
+        <td>Author ID</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${posts}" bgcolor="#faebd7">
+        <td th:text="${p.id}">1</td>
+        <td th:text="${p.title}">Facebook</td>
+        <td th:text="${p.body}">Ada2 saja ya facebook</td>
+        <td th:text="${p.author.id}">1</td>
+        <td th:text="${#dates.format(p.date, 'dd-MMM-yyyy HH:mm')}">02-08-2017</td>
+        <td>[Edit] | [Delete]</td>
+    </tr>
+    </tbody>
+</table>
 
 
 <footer th:replace="layout :: site-footer"/>
