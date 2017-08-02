@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
+@RequestMapping("/posts")
 public class PostsController {
     @Autowired
     private PostService postService;
@@ -28,7 +32,7 @@ public class PostsController {
     @Autowired
     private NotificationService notifyService;
 
-    @RequestMapping("/posts/view/{id}")
+    @RequestMapping("/view/{id}")
     public String view(@PathVariable("id") Long id, Model model) {
         Post post = postService.findById(id);
 
@@ -40,9 +44,23 @@ public class PostsController {
         return "posts/view";
     }
 
-    @GetMapping("/posts")
-    public String list(Model m){
+    @GetMapping("")
+    public String list(Model m) {
         m.addAttribute("posts", postService.findAll());
         return "posts/list";
+    }
+
+
+    @GetMapping("/create")
+    public String showFormPost(Model m) {
+        m.addAttribute("post", new Post());
+        return "posts/new-post";
+    }
+
+    @PostMapping("/create")
+    public String createPost(@Valid Post post){
+        System.out.println("Data : " + post);
+        postService.create(post);
+        return "redirect:list";
     }
 }
