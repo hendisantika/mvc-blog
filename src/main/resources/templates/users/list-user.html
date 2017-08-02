@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+    <title>List User</title>
+</head>
+<body>
+<header th:replace="layout :: site-header"/>
+
+<h2>List Users</h2>
+
+<table border="1">
+    <thead>
+
+    <tr align="center" style="font-weight:bold" bgcolor="#ffe4c4">
+        <td>ID</td>
+        <td>Username</td>
+        <td>Fullname</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="u : ${users}" bgcolor="#faebd7">
+        <td th:text="${u.id}">1</td>
+        <td th:text="${u.username}">hendisantika</td>
+        <td th:text="${u.fullName}">Hendi Santika</td>
+        <td>[Edit] | [Delete]</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<footer th:replace="layout :: site-footer"/>
+</body>
+</html>
