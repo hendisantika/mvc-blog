@@ -62,8 +62,13 @@ public class PostsController {
     }
 
     @GetMapping("/edit{id}")
-    public String editPost(@RequestParam Long id, Model m) {
+    public String editPost(@RequestParam(value = "id") Long id, Model m) {
         Post post = postService.findById(id);
+
+        if (post == null) {
+            notifyService.addErrorMessage("Cannot find post #" + id);
+            return "redirect:/";
+        }
         m.addAttribute("posts", post);
         return "posts/edit";
     }
