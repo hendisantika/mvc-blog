@@ -27,7 +27,7 @@
         <td th:text="${p.body}">Ada2 saja ya facebook</td>
         <td th:text="${p.author.id}">1</td>
         <td th:text="${#dates.format(p.date, 'dd-MMM-yyyy HH:mm')}">02-08-2017</td>
-        <td>[Edit] | [Delete]</td>
+        <td><a href="edit.html" th:href="@{/posts/edit(id=${p.id})}">[Edit] | <a href="form.html" th:href="@{/peserta/form(id=${p.id})}">[Delete]</td>
     </tr>
     </tbody>
 </table>
