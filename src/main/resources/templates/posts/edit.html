@@ -22,7 +22,8 @@
 
     <label for="body">Content :</label><br/>
     <textarea id="body" name="body"
-              th:value="*{body}" rows="10" cols="60">Ada Apa dengan Cinta 3</textarea>>
+              th:name="body" th:inline="text" rows="10" cols="60" placeholder="Ada Apa dengan Cinta 3">[[${posts.body}]]</textarea>>
+    <!--<textarea id="body" name="body" th:field="${posts.body}" rows="10" cols="60" placeholder="Ada Apa dengan Cinta 3"></textarea>>-->
     <span class="formError"
           th:if="${#fields.hasErrors('body')}"
           th:errors="*{body}">Invalid body</span>
