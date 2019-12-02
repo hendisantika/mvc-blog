@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,10 +29,12 @@ public class UserServiceJpaImpl implements UserService {
     public List<User> findAll() {
         return this.userRepo.findAll();
     }
+
     @Override
-    public User findById(Long id) {
-        return this.userRepo.findOne(id);
+    public Optional<User> findById(Long id) {
+        return this.userRepo.findById(id);
     }
+
     @Override
     public User create(User user) {
         return this.userRepo.save(user);
@@ -42,7 +45,7 @@ public class UserServiceJpaImpl implements UserService {
     }
     @Override
     public void deleteById(Long id) {
-        this.userRepo.delete(id);
+        this.userRepo.deleteById(id);
     }
 
 }
