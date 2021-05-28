@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,12 +32,13 @@ public class PostServiceJpaImpl implements PostService{
 
     @Override
     public List<Post> findLatest5() {
-        return this.postRepo.findLatest5Posts(new PageRequest(0, 5));
+        return this.postRepo.findLatest5Posts(PageRequest.of(0, 5));
     }
 
     @Override
     public Post findById(Long id) {
-        return this.postRepo.findOne(id);
+        Optional<Post> post = this.postRepo.findById(id);
+        return post.get();
     }
 
     @Override
@@ -51,6 +53,6 @@ public class PostServiceJpaImpl implements PostService{
 
     @Override
     public void deleteById(Long id) {
-        this.postRepo.delete(id);
+        this.postRepo.deleteById(id);
     }
 }
