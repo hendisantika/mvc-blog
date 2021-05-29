@@ -15,9 +15,9 @@ spring:
     password: root
   # Configure Hibernate DDL mode: create / update
   jpa:
-    generate-ddl: true
+    generate-ddl: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
     #      hbm2ddl:
     #        import_files: classpath:db/data.sql

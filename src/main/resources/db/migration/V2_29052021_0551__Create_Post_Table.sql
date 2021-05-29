@@ -1,9 +1,9 @@
 CREATE TABLE `post`
 (
-    `id`        INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `author_id` INT(11) NOT NULL,
+    `id`        BIGINT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `author_id` BIGINT(11) NOT NULL,
     `title`     VARCHAR(100) NOT NULL,
-    `body`      TEXT         NOT NULL,
+    `body`      LONGTEXT     NOT NULL,
     `date`      TIMESTAMP,
     FOREIGN KEY (author_id) REFERENCES users (id)
 );
